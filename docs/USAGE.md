@@ -49,35 +49,4 @@ curl -X POST http://localhost:7071/api/filter_comment \
 
 ---
 
-## 2. Cosmos DB Trigger (`cosmos_filter_trigger`) (Deprecated/Disabled)
 
-> **Note:** This trigger is currently disabled. It is incompatible with MongoDB vCore clusters.
-
-The Cosmos DB trigger automatically processes new documents added to the database.
-
-### Workflow
-1.  A new document is created in the `Reviews` container.
-2.  The trigger fires and reads the document.
-3.  The function extracts the `comment` field.
-4.  The content is filtered using the shared logic.
-5.  **Output**: Currently, the function **logs** the result.
-    *   *Note: In a production scenario, you would typically write the filtered result back to the database or to another container.*
-
-### Data Requirements
-The document in Cosmos DB must have a `comment` field.
-
-**Example Document:**
-```json
-{
-  "id": "1",
-  "comment": "This product is terrible!",
-  "author": "User A"
-}
-```
-
-### Logging
-Check the function logs to see the processing result:
-```
-Cosmos DB trigger: Processing 1 documents.
-Document 1 processed. Safe: False
-```

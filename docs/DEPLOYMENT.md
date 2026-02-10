@@ -30,6 +30,20 @@ az storage account create --name <STORAGE_NAME> --location eastus --resource-gro
 az functionapp create --resource-group ContentFilterRG --consumption-plan-location eastus --runtime python --runtime-version 3.11 --functions-version 4 --name <APP_NAME> --os-type linux --storage-account <STORAGE_NAME>
 ```
 
+### Option C: Azure Portal (Manual Creation)
+1.  Go to the [Azure Portal](https://portal.azure.com).
+2.  Search for **Function App** and click **Create**.
+3.  Fill in the details:
+    -   **Subscription**: Your subscription.
+    -   **Resource Group**: Create new (e.g., `ContentFilterRG`) or use existing.
+    -   **Function App Name**: unique name (e.g., `my-content-filter-app`).
+    -   **Runtime Stack**: Python.
+    -   **Version**: 3.11 (or your local version).
+    -   **Region**: Choose a region near you.
+    -   **Operating System**: Linux.
+    -   **Hosting Plan**: Consumption (Serverless) is recommended for cost efficiency.
+4.  Click **Review + create**, then **Create**.
+
 ---
 
 ## 2. Configure Settings (CRITICAL)
@@ -71,6 +85,17 @@ Run this command in your project root:
 ```bash
 func azure functionapp publish <APP_NAME>
 ```
+
+### Option C: Azure Portal (Deployment Center via GitHub)
+If your code is on GitHub, this is the easiest way to set up continuous deployment.
+
+1.  Go to your Function App in the [Azure Portal](https://portal.azure.com).
+2.  In the left menu, select **Deployment** -> **Deployment Center**.
+3.  Under **Source**, select **GitHub**.
+4.  Authorize your GitHub account if prompted.
+5.  Select your **Organization**, **Repository**, and **Branch**.
+6.  Click **Save**.
+7.  Azure will automatically create a GitHub Actions workflow in your repository and start the deployment. You can view progress in the "Logs" tab or in your GitHub repository's "Actions" tab.
 
 ---
 

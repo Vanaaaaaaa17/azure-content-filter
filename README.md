@@ -22,9 +22,9 @@ A serverless content filtering microservice built with Azure Functions (Python v
 
 ## Triggers
 
-This function app supports two triggers:
-1.  **HTTP Trigger**: Invoke directly via HTTP POST.
-2.  **Cosmos DB Trigger**: Automatically invoked when a document is created/updated in the `Reviews` container.
+This function app supports the following trigger:
+-   **HTTP Trigger**: Invoke directly via HTTP POST.
+
 
 See **[docs/USAGE.md](docs/USAGE.md)** for API documentation and examples.
 
